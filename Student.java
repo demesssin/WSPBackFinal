@@ -13,6 +13,7 @@ public class Student extends User {
     private List<Double> marks;
     private Report urgencyLevel;
     private Marks marksRecord;
+    private List<Course> registeredCourses;
 
     public Student(String name, String lastname, double gpa, int course, Major major, String email, String password, Report urgencyLevel) {
         super(email, password);
@@ -24,6 +25,7 @@ public class Student extends User {
         this.marks = new ArrayList<>();
         this.urgencyLevel = null;
         this.marksRecord = new Marks();
+        this.registeredCourses = new ArrayList<>();
     }
 
     public String getName() {
@@ -49,6 +51,8 @@ public class Student extends User {
     public Marks getMarksRecord() {
         return marksRecord;
     }
+
+    public List<Course> getRegisteredCourses(){return registeredCourses;}
 
     @Override
     public String toString() {
@@ -83,9 +87,42 @@ public class Student extends User {
     public void viewTranscript() {
         Marks record = this.getMarksRecord();
         System.out.println("Transcript for " + name + " " + lastname + ":");
-        System.out.println("- First Attestation: " + record.getFirstAttestation());
-        System.out.println("- Second Attestation: " + record.getSecondAttestation());
-        System.out.println("- Final Exam: " + record.getFinalExam());
-        System.out.println("- Total Score: " + record.totalMarksForAll());
+        System.out.println("||| First Attestation: " + record.getFirstAttestation());
+        System.out.println("||| Second Attestation: " + record.getSecondAttestation());
+        System.out.println("||| Final Exam: " + record.getFinalExam());
+        System.out.println("||| Total Points: " + record.totalMarksForAll());
+    }
+
+    public void registerForCourse(Course[] availableCourses, String courseCipher){
+        boolean courseFound = false;
+        Course choosenCourse = null;
+        for (Course course : availableCourses){
+            if (course.getCourseCipher().equals(courseCipher)){
+                choosenCourse = course;
+                courseFound = true;
+                break;
+            }
+        }
+        if (!courseFound){
+            System.out.println("We dont have courses with this cipher: " + courseCipher);
+            return;
+        }
+        if (registeredCourses.contains(choosenCourse)){
+            System.out.println("You already choosed this course");
+        } else{
+            registeredCourses.add(choosenCourse);
+            System.out.println("You successfully chosen this course");
+        }
+    }
+
+    public void viewRegisteredCourses(){
+        if (registeredCourses.isEmpty()){
+            System.out.println("You don't choose any courses");
+        } else {
+            System.out.println("Registered courses of " + name + " " + lastname + ":");
+            for (Course course : registeredCourses){
+                System.out.println("| " + course);
+            }
+        }
     }
 }

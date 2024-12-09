@@ -29,7 +29,15 @@ public class Main {
         t1.putFinalExam(s1, 20.0);
         s1.viewTranscript();
 
+        Course[] availableCourses = {
+                new Course("OOP", 4, "CSCI2104"),
+                new Course("ADS", 3, "CSCI2105"),
+                new Course("Data Bases", 5, "CSCI2106"),
+                new Course("PE", 10, "PHE101")
+        };
 
-
+        s1.registerForCourse(availableCourses, "CSCI2105");
+        s1.registerForCourse(availableCourses, "PHE10");
+        s1.viewRegisteredCourses();
     }
 }
