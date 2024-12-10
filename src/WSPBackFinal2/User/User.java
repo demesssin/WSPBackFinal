@@ -1,7 +1,12 @@
 package WSPBackFinal.User;
+
+import WSPBackFinal.Researcher.Researcher;
+
 public abstract class User {
     private String email;
     private String password;
+    Researcher researchProfile;
+
 
     public User(String email, String password){
         this.email = email;
