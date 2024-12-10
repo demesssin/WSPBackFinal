@@ -14,6 +14,9 @@ class Post {
         this.content = content;
         this.author = author;
     }
+    public Post(){
+
+    }
 
     public Date getDate() {
         return date;

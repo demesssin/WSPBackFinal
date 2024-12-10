@@ -2,7 +2,7 @@ package WSPBackFinal;
 
 import java.util.Vector;
 
-public class News {
+public class News extends Post{
     public String newsTopic;
     public Vector<String> comment;
 

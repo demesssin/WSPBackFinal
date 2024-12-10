@@ -1,24 +1,31 @@
 package WSPBackFinal;
+
+import java.util.Vector;
+
 public class Course {
-    public String courseName;
-    public String courseCipher;
-    public int courseCredits;
+    private Vector<Lesson> lessons;
+    private String ID;
+    private Faculty faculty;
+    private String name;
+    private Integer ects;
 
-    public Course(String courseName, int courseCredits, String courseCipher){
-        this.courseName = courseName;
-        this.courseCredits = courseCredits;
-        this.courseCipher = courseCipher;
+    public Vector<Lesson> getLessons() {
+        return lessons;
     }
-    public String getCourseName(){
-        return courseName;
-    }
-    public int getCourseCredits() {
-        return courseCredits;
-    }
-    public String getCourseCipher(){return courseCipher;}
 
-    @Override
-    public String toString() {
-        return courseName + " {" + courseCredits + " ECTS " + ", " + courseCipher + "}";
+    public String getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public Integer getEcts() {
+        return ects;
     }
 }
